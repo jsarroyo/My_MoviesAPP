@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.example.movieapp.model.AddMovie
 import com.example.movieapp.model.Moovie
+import kotlinx.android.synthetic.main.activity_main.*
 
 import kotlinx.android.synthetic.main.serie_list_content.view.*
 import kotlinx.android.synthetic.main.item_list.*
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        btnAddMovie.setOnClickListener(){
+            val intent = Intent(this,AddMovie::class.java)
+            startActivity(intent)
+        }
         if (detailFrameLayout != null) {
             twoPane = true
 
@@ -81,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.detailFrameLayout, fragment)
                         .commit()
                 } else {
-                    val intent = Intent(v.context, DetailActivity::class.java).apply {
+                    val intent = Intent(v.context, DetActivity::class.java).apply {
                         putExtra("name",values[recyclerView.getChildAdapterPosition(v)].name)
                         putExtra("author",values[recyclerView.getChildAdapterPosition(v)].author)
                         putExtra("season",values[recyclerView.getChildAdapterPosition(v)].season.toString())
