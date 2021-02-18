@@ -1,3 +1,12 @@
+
 <resources>
-    <string name="app_name">My_MoviesAPP</string>
+<string name="app_name">Movieapp</string>
+<string name="name">Joker</string>
+<string name="author">Todd Phillips</string>
+<string name="season">1</string>
+<string name="season_text">Guasón</string>
+<string name="description">Película de suspenso y drama psicológico estadounidense de 2019 distribuida por Warner Bros. Pictures y basada en el Joker, personaje de DC Comics.</string>
+<string name="todo">TODO</string>
+<string name="title_activity_main">Película</string>
+<string name="subtitle_activity_main">Suspenso y drama psicológico</string>
 </resources>

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.my_moviesapp"
+        applicationId "com.example.movieapp"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -43,4 +43,14 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Constraintlayout
+    //Recycler view
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //Anroid Material
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 }
