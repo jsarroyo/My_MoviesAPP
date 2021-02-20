@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Movieapp</string>
+    <string name="name">Joker</string>
+    <string name="author">Todd Phillips</string>
+    <string name="season">1</string>
+    <string name="season_text">Guasón</string>
+    <string name="description">Película de suspenso y drama psicológico estadounidense de 2019 distribuida por Warner Bros. Pictures y basada en el Joker, personaje de DC Comics.</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_main">Mooovies App</string>
+    <string name="subtitle_activity_main">Lista</string>
+    <string name="subtitle_add_moovie_activity_main">Agregar película</string>
+    <string name="title_activity_basic2">Basic</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="txt_moovie_name">Nombre</string>
+    <string name="txt_moovie_author">Autor</string>
+    <string name="txt_movie_url_imagen">Url Poster</string>
+    <string name="txt_main_description">Descripcion</string>
+    <string name="txt_add_moovie_text_button">Agregar</string>
+</resources>
