@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.example.movieapp.model.AddMovie
 import com.example.movieapp.model.Moovie
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,13 +18,17 @@ import kotlinx.android.synthetic.main.item_list.*
 class MainActivity : AppCompatActivity() {
 
     private var twoPane: Boolean = false
-
+    companion object{
+        val mMovie:MutableList<Moovie> = ArrayList()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnAddMovie.setOnClickListener(){
-            val intent = Intent(this,AddMovie::class.java)
+        setMoovies();
+
+        btnGoToAddMovie.setOnClickListener {
+            val intent = Intent(this, AddMovie::class.java)
             startActivity(intent)
         }
         if (detailFrameLayout != null) {
@@ -58,11 +61,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SerieViewAdapter(this,getMoovies(), twoPane, recyclerView)
+        recyclerView.adapter = SerieViewAdapter(this, twoPane, recyclerView)
     }
 
     class SerieViewAdapter(private val parentActivity: MainActivity,
-                           private val values: List<Moovie>,
+                           /*private val values: List<Moovie>,*/
                            private val twoPane: Boolean,
                            private val recyclerView: RecyclerView):
         RecyclerView.Adapter<SerieViewAdapter.ViewHolder>() {
@@ -75,11 +78,11 @@ class MainActivity : AppCompatActivity() {
                 if (twoPane) {
                     val fragment = DetailFragment().apply {
                         arguments = Bundle().apply {
-                            putString("name",values[recyclerView.getChildAdapterPosition(v)].name)
-                            putString("author",values[recyclerView.getChildAdapterPosition(v)].author)
-                            putString("season",values[recyclerView.getChildAdapterPosition(v)].season.toString())
-                            putString("description",values[recyclerView.getChildAdapterPosition(v)].description)
-                            putString("url",values[recyclerView.getChildAdapterPosition(v)].url)
+                            putString("name",mMovie[recyclerView.getChildAdapterPosition(v)].name)
+                            putString("author",mMovie[recyclerView.getChildAdapterPosition(v)].author)
+                            putString("season",mMovie[recyclerView.getChildAdapterPosition(v)].season.toString())
+                            putString("description",mMovie[recyclerView.getChildAdapterPosition(v)].description)
+                            putString("url",mMovie[recyclerView.getChildAdapterPosition(v)].url)
                         }
                     }
                     parentActivity.supportFragmentManager
@@ -88,11 +91,11 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                 } else {
                     val intent = Intent(v.context, DetActivity::class.java).apply {
-                        putExtra("name",values[recyclerView.getChildAdapterPosition(v)].name)
-                        putExtra("author",values[recyclerView.getChildAdapterPosition(v)].author)
-                        putExtra("season",values[recyclerView.getChildAdapterPosition(v)].season.toString())
-                        putExtra("description",values[recyclerView.getChildAdapterPosition(v)].description)
-                        putExtra("url",values[recyclerView.getChildAdapterPosition(v)].url)
+                        putExtra("name",mMovie[recyclerView.getChildAdapterPosition(v)].name)
+                        putExtra("author",mMovie[recyclerView.getChildAdapterPosition(v)].author)
+                        putExtra("season",mMovie[recyclerView.getChildAdapterPosition(v)].season.toString())
+                        putExtra("description",mMovie[recyclerView.getChildAdapterPosition(v)].description)
+                        putExtra("url",mMovie[recyclerView.getChildAdapterPosition(v)].url)
                     }
                     v.context.startActivity(intent)
                 }
@@ -106,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val movie = values[position]
+            val movie = mMovie[position]
             holder.mPosterImageView?.let {
                 Glide.with(holder.itemView.context)
                     .load(movie.url)
@@ -119,15 +122,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        override fun getItemCount() = values.size
+        override fun getItemCount() = mMovie.size
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val mPosterImageView: ImageView? = view.posterImageView
         }
     }
 
-    private fun getMoovies(): MutableList<Moovie>{
-        val mMovie:MutableList<Moovie> = ArrayList()
+    private fun setMoovies(){
+
         mMovie.add(Moovie("joker", "Todd Phillips", 1,"Situada en los años 80′. Un cómico fallido es arrastrado a la locura, convirtiendo su vida en una vorágine de caos y delincuencia que poco a poco lo llevará a ser el psicópata criminal más famoso de Gotham.","https://image.tmdb.org/t/p/w185_and_h278_bestv2/v0eQLbzT6sWelfApuYsEkYpzufl.jpg"))
 
         mMovie.add(Moovie("Parasite", "Bong Joon-ho", 1,"anto Gi Taek (Song Kang Ho) como su familia están sin trabajo. Cuando su hijo mayor, Gi Woo (Choi Woo Shik), empieza a recibir clases particulares en casa de Park (Lee Sun Gyun), las dos familias, que tienen mucho en común pese a pertenecer a dos mundos totalmente distintos, comienzan una interrelación de resultados impresivibles.","https://cuevana3.io/wp-content/uploads/2019/08/parasite-20039-poster-211x300.jpg"))
@@ -138,7 +141,6 @@ class MainActivity : AppCompatActivity() {
 
         mMovie.add(Moovie("The Flash", "Glen Winter",1 ,"Nueve meses después de que el laboratorio S.T.A.R. explotara, Barry despierta del coma y descubre que tiene el poder de la súper velocidad. Con la ayuda de su nuevo equipo, Barry, denominado ahora `Flash', luchará contra el crimen en Ciudad Central.","https://www.formulatv.com/images/series/posters/800/834/7_m1.jpg"))
 
-        return mMovie
     }
 }
 

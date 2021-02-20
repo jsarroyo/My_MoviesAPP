@@ -123,6 +123,27 @@
             android:textColor="@color/colorText"
             android:text="@string/season_text" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnDeleteMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTextView"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="98dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="400dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:backgroundTint="@color/black"
+
+            android:visibility="visible"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="wrap_content"
@@ -142,7 +163,11 @@
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             android:text="@string/description" />
+
+
+
     </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

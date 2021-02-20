@@ -8,6 +8,18 @@
     android:background="@color/colorWhite"
     tools:context=".DetActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_delete_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_vertical"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/posterImageView"
+        app:backgroundTint="@color/design_default_color_on_primary"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
     <ImageView
         android:id="@+id/posterImageView"
         android:layout_width="match_parent"
@@ -135,12 +147,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="21dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="11dp"
+            android:text="@string/description"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:text="@string/description" />
+            android:textSize="16sp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
